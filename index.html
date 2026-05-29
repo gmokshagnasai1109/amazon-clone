@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HEADER SECTION -->
+  <header>
+
+    <!-- TOP NAVBAR -->
+    <div class="top-nav">
+
+      <!-- LOGO -->
+      <div class="logo" onclick="home()">
+        amazon<span>.in</span>
+      </div>
+
+      <!-- ADDRESS -->
+      <div class="address" onclick="openPopup('locationPopup')">
+        <small>Deliver to</small>
+        <b>📍 Mangalagiri 522503</b>
+      </div>
+
+      <!-- SEARCH BOX -->
+      <div class="search-box">
+
+        <select id="searchCategory" onchange="showSelectedCategory()">
+          <option value="all">All</option>
+          <option value="electronics">Electronics</option>
+          <option value="fashion">Fashion</option>
+          <option value="fresh">Fresh</option>
+          <option value="deals">Today's Deals</option>
+          <option value="home">Home</option>
+        </select>
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search Amazon.in"
+          autocomplete="off"
+          spellcheck="false"
+          oninput="showSearchSuggestions()"
+          onkeydown="if(event.key==='Enter') searchProducts()">
+
+        <button onclick="searchProducts()">🔍</button>
+
+        <div id="suggestionsBox"></div>
+
+      </div>
+
+      <!-- LANGUAGE -->
+      <div class="lang">
+        🇮🇳 EN
+      </div>
+
+      <!-- ACCOUNT -->
+      <div class="nav-link" onclick="openPopup('loginPopup')">
+        <small>Hello, sign in</small>
+        <b>Account & Lists</b>
+      </div>
+
+      <!-- ORDERS -->
+      <div class="nav-link" onclick="openPopup('ordersPopup')">
+        <small>Returns</small>
+        <b>& Orders</b>
+      </div>
+
+      <!-- CART -->
+      <div class="cart" onclick="showCart()">
+        🛒 Cart
+        <span id="cartCount">0</span>
+      </div>
+
+    </div>
+
+    <!-- SECOND MENU BAR -->
+    <div class="menu-bar">
+      <span onclick="home()">☰ All</span>
+      <span onclick="showCategory('rufus')">Rufus</span>
+      <span onclick="showCategory('buyagain')">Buy Again</span>
+      <span onclick="showCategory('mx')">MX Player</span>
+      <span onclick="showCategory('sell')">Sell</span>
+      <span onclick="showCategory('giftcards')">Gift Cards</span>
+      <span onclick="showCategory('basics')">AmazonBasics</span>
+      <span onclick="showCategory('pay')">Amazon Pay</span>
+      <span onclick="showCategory('home')">Home Improvement</span>
+      <span onclick="showCategory('service')">Customer Service</span>
+      <span onclick="showCategory('deals')">Today's Deals</span>
+      <span onclick="showCategory('new')">New Releases</span>
+    </div>
+
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main id="mainContent">
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+
+      <button onclick="changeHero(-1)">‹</button>
+
+      <div class="hero-text">
+        <span>Just Launched</span>
+        <h1>Up to 30% off on hotels</h1>
+        <p>Now available on desktop</p>
+        <h2>amazon pay</h2>
+      </div>
+
+      <button onclick="changeHero(1)">›</button>
+
+    </section>
+
+    <!-- WHITE SHOPPING CARDS -->
+    <section class="grid-boxes">
+
+      <!-- CARD 1 -->
+      <div class="home-card">
+
+        <h2>Pick up where you left off</h2>
+
+        <div class="mini-grid">
+
+          <img
+            src="https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg"
+            onclick="showCategory('fashion')"
+            onerror="this.src='https://placehold.co/300x250?text=Fashion'">
+
+          <img
+            src="https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg"
+            onclick="showCategory('fashion')"
+            onerror="this.src='https://placehold.co/300x250?text=Fashion'">
+
+          <img
+            src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg"
+            onclick="showCategory('fashion')"
+            onerror="this.src='https://placehold.co/300x250?text=Fashion'">
+
+          <img
+            src="https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg"
+            onclick="showCategory('fashion')"
+            onerror="this.src='https://placehold.co/300x250?text=Fashion'">
+
+        </div>
+
+        <p onclick="showCategory('fashion')">Men's shorts</p>
+
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="home-card">
+
+        <h2>Keep shopping for</h2>
+
+        <div class="mini-grid">
+
+          <img
+            src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg"
+            onclick="showCategory('electronics')"
+            onerror="this.src='https://placehold.co/300x250?text=Electronics'">
+
+          <img
+            src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg"
+            onclick="showCategory('electronics')"
+            onerror="this.src='https://placehold.co/300x250?text=Electronics'">
+
+          <img
+            src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg"
+            onclick="showCategory('electronics')"
+            onerror="this.src='https://placehold.co/300x250?text=Electronics'">
+
+          <img
+            src="https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg"
+            onclick="showCategory('electronics')"
+            onerror="this.src='https://placehold.co/300x250?text=Electronics'">
+
+        </div>
+
+        <p onclick="showCategory('electronics')">View your browsing history</p>
+
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="home-card">
+
+        <h2>Continue shopping deals</h2>
+
+        <div class="mini-grid">
+
+          <img
+            src="https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg"
+            onclick="showCategory('deals')"
+            onerror="this.src='https://placehold.co/300x250?text=Deals'">
+
+          <img
+            src="https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg"
+            onclick="showCategory('deals')"
+            onerror="this.src='https://placehold.co/300x250?text=Deals'">
+
+          <img
+            src="https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg"
+            onclick="showCategory('deals')"
+            onerror="this.src='https://placehold.co/300x250?text=Deals'">
+
+          <img
+            src="https://images.pexels.com/photos/325876/pexels-photo-325876.jpeg"
+            onclick="showCategory('deals')"
+            onerror="this.src='https://placehold.co/300x250?text=Deals'">
+
+        </div>
+
+        <p onclick="showCategory('deals')">See more deals</p>
+
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="home-card ad-card">
+
+        <h2>Get bulk discounts + cashback</h2>
+
+        <div class="business-box" onclick="showCategory('sell')">
+          amazon<br>business
+        </div>
+
+        <p onclick="showCategory('sell')">Register now</p>
+
+      </div>
+
+    </section>
+
+    <!-- PRODUCT ROW 1 -->
+    <section class="scroll-row">
+      <h2>Related to items you've viewed</h2>
+      <div class="row-products" id="shortsRow"></div>
+    </section>
+
+    <!-- PRODUCT ROW 2 -->
+    <section class="scroll-row">
+      <h2>Based on your cart</h2>
+      <div class="row-products" id="cartBasedRow"></div>
+    </section>
+
+    <!-- PRODUCT ROW 3 -->
+    <section class="scroll-row">
+      <h2>Best Sellers in Computers</h2>
+      <div class="row-products" id="computerRow"></div>
+    </section>
+
+    <!-- HISTORY SECTION -->
+    <section class="history-section">
+      <h2>Customers who viewed items also viewed</h2>
+      <div class="history-products" id="historyProducts"></div>
+    </section>
+
+  </main>
+
+  <!-- LOCATION POPUP -->
+  <div class="popup" id="locationPopup">
+    <h2>Choose your location</h2>
+    <input type="text" placeholder="Enter city or pincode">
+    <button onclick="closePopups()">Apply</button>
+  </div>
+
+  <!-- LOGIN POPUP -->
+  <div class="popup" id="loginPopup">
+    <h2>Sign in</h2>
+    <input type="email" placeholder="Email or mobile number">
+    <input type="password" placeholder="Password">
+    <button onclick="closePopups()">Sign in</button>
+  </div>
+
+  <!-- ORDERS POPUP -->
+  <div class="popup" id="ordersPopup">
+    <h2>Your Orders</h2>
+    <p>No orders yet.</p>
+    <button onclick="closePopups()">Close</button>
+  </div>
+
+  <!-- CART POPUP -->
+  <div class="popup" id="cartPopup">
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <button onclick="closePopups()">Close</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="back" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      Back to top
+    </div>
+
+    <div class="footer-top">
+
+      <div>
+        <h3>Get to Know Us</h3>
+        <p>About Amazon</p>
+        <p>Careers</p>
+        <p>Press Releases</p>
+      </div>
+
+      <div>
+        <h3>Connect with Us</h3>
+        <p>Facebook</p>
+        <p>Instagram</p>
+        <p>Twitter</p>
+      </div>
+
+      <div>
+        <h3>Make Money with Us</h3>
+        <p>Sell on Amazon</p>
+        <p>Advertise Products</p>
+        <p>Amazon Pay</p>
+      </div>
+
+      <div>
+        <h3>Let Us Help You</h3>
+        <p>Your Account</p>
+        <p>Returns Centre</p>
+        <p>Help</p>
+      </div>
+
+    </div>
+
+    <div class="footer-mid">
+      <h2>amazon</h2>
+      <button>🌐 English</button>
+      <button>🇮🇳 India</button>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Amazon Frontend Clone Project</p>
+      <p>Developed by GOWRNENI MOKSHAGNASAI</p>
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
